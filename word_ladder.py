@@ -75,6 +75,7 @@ def verify_word_ladder(ladder):
         else:
             i += 1
 
+
 def _adjacent(word1, word2):
     '''
     Returns True if the input words differ by only a single character;
