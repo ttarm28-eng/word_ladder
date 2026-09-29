@@ -1,5 +1,5 @@
 #!/bin/python3
-
+from collections import deque
 
 def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     '''
@@ -31,6 +31,8 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     HINT:
     See <https://github.com/mikeizbicki/cmc-csci046/issues/472> for a discussion about a common memory management bug that causes the generated word ladders to be too long in some cases.
     '''
+    if start_word == end_word:
+        return [start_word]
     dictionary = set()
     with open(dictionary_file) as prelim_dict:
         for line in prelim_dict:
@@ -82,7 +84,9 @@ def _adjacent(word1, word2):
     False
     '''
     count = 0
-    for i in range(len(word1):
+    for i in range(len(word1)):
+        if len(word1) != len(word2):
+            return False
         if word1[i] != word2[i]:
             count += 1
         if count > 1:
